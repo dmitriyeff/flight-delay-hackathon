@@ -1,3 +1,4 @@
 flask
 lightgbm
 pandas
+flask-cors

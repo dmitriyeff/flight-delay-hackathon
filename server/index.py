@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import lightgbm as lgb
 import pandas as pd
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the trained LightGBM model
 MODEL_PATH = os.path.join(os.path.dirname(__file__), '../flight_delay_lgbm.txt')
@@ -19,7 +21,7 @@ MEDIAN_VALUES = {
 MODE_CARRIER = 0  # Most frequent carrier code from training data
 
 # Example columns order (should match training data)
-COLUMNS = ['Month', 'DayofMonth', 'Carrier', 'OriginAirportID', 'DestAirportID', 'DepDelay', 'DayOfWeek']
+COLUMNS = ['Month', 'DayofMonth', 'Carrier', 'OriginAirportID', 'DestAirportID', 'DayOfWeek']
 
 @app.route('/predict', methods=['GET'])
 def predict_delay():
@@ -42,7 +44,6 @@ def predict_delay():
             'Carrier': MODE_CARRIER,
             'OriginAirportID': int(origin_airport_id),
             'DestAirportID': int(destination_airport_id),
-            'DepDelay': MEDIAN_VALUES['DepDelay']
         }
         # Add DayOfWeek if the model expects it
         if 'DayOfWeek' in COLUMNS:
