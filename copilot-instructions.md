@@ -1,0 +1,14 @@
+- Create a Python server in the server directory
+- Create an API GET endpoint that returns the probability of a flight being delayed by more than 15 minutes
+- Endpoint should accept the following parameters:
+  - day_of_week: The day of the week (0-6, where 0 is Sunday and 6 is Saturday)
+  - origin_airport_id: The ID of the airport of the origin airport
+  - destination_airport_id: The ID of the airport of the destination airport
+- The API should return a JSON response with the following structure:
+  - probability: The probability of a flight being delayed by more than 15 minutes
+  - message: A message indicating the status of the request
+- The API should return a 200 status code if the request is successful, or a 400 status code if the request is invalid
+- Pass following parameters to the prediction function:
+  - origin_airport_id
+  - destination_airport_id
+  - day_of_week
