@@ -25,9 +25,9 @@ COLUMNS = ['Month', 'DayofMonth', 'Carrier', 'OriginAirportID', 'DestAirportID',
 def predict_delay():
     try:
         # Get parameters
-        day_of_week = request.args.get('day_of_week', type=int)
-        origin_airport_id = request.args.get('origin_airport_id', type=int)
-        destination_airport_id = request.args.get('destination_airport_id', type=int)
+        day_of_week = request.args.get('dayOfTheWeek', type=int)
+        origin_airport_id = request.args.get('originAirportId', type=int)
+        destination_airport_id = request.args.get('destinationAirportId', type=int)
 
         # Validate parameters
         if day_of_week is None or origin_airport_id is None or destination_airport_id is None:
