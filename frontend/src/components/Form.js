@@ -3,14 +3,17 @@ import './Form.css';
 import airports from '../data/airports'; // Adjust the path as necessary
 
 const Form = ({ onSubmit }) => {
-    const [selectedAirport, setSelectedAirport] = useState('');
+	// replace this state by two states, one for airport of origin, and one for airport of destination
+
+	const [selectedOriginAirport, setSelectedOriginAirport] = useState('');
+	const [selectedDestinationAirport, setSelectedDestinationAirport] = useState('');
     const [selectedDay, setSelectedDay] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit({ 
-			originAirportId: selectedAirport, 
-			destinationAirportId: selectedAirport,
+			originAirportId: selectedOriginAirport, 
+			destinationAirportId: selectedDestinationAirport,
 			dayOfTheWeek: selectedDay,
 		 });
     };
@@ -30,8 +33,8 @@ const Form = ({ onSubmit }) => {
             <label htmlFor="airport">Departure from:</label>
             <select
                 id="originAirport"
-                value={selectedAirport}
-                onChange={(e) => setSelectedAirport(e.target.value)}
+                value={selectedOriginAirport}
+                onChange={(e) => setSelectedOriginAirport(e.target.value)}
             >
                 <option value="">--Select an Airport--</option>
                 {airports.map((airport) => (
@@ -43,8 +46,8 @@ const Form = ({ onSubmit }) => {
 			<label htmlFor="airport">Arrival to:</label>
 			<select
                 id="destinationAirport"
-                value={selectedAirport}
-                onChange={(e) => setSelectedAirport(e.target.value)}
+                value={selectedDestinationAirport}
+                onChange={(e) => setSelectedDestinationAirport(e.target.value)}
             >
                 <option value="">--Select an Airport--</option>
                 {airports.map((airport) => (
