@@ -8,7 +8,7 @@ function App() {
 
     const onSubmit = async ({ originAirportId, destinationAirportId, dayOfTheWeek }) => {
         try {
-            const response = await fetch(`http://localhost:3500/delay-probability?originAirportId=${originAirportId}&destinationAirportId=${destinationAirportId}&dayOfTheWeek=${dayOfTheWeek}`, {
+            const response = await fetch(`http://localhost:5000/predict?originAirportId=${originAirportId}&destinationAirportId=${destinationAirportId}&dayOfTheWeek=${dayOfTheWeek}`, {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                 },
